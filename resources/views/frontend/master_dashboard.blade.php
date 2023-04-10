@@ -95,6 +95,9 @@
                     $('#productBrand').text(data.product.brand.brand_name);
                     $('#productImage').attr('src','/'+data.product.product_thumbnail);
 
+                    $('#product_id').val(id);
+                    $('#qty').val(1);
+
                     if (data.product.discount_price == null) {
                         $('#productPrice').text('');
                         $('#oldPrice').text('');
@@ -137,6 +140,33 @@
                 }
             })
         }
+
+        //end product with modal
+
+        //start add to cart product
+
+        function addToCard(params) {
+            var product_name = $('#productName').text();  
+            var id = $('#product_id').val();   
+            var color = $('#color option:select').text();   
+            var size = $('#size option:selected').text();   
+            var quantity = $('#quantity').val();   
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data:{
+                    color:color, size:size, quantity:quantity, product_name:product_name
+                },
+                url: "/cart/data/store/"+id,
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+        }
+
+        //end add to cart product
+
+
     </script>
 
     <!--//wishlist start add-->

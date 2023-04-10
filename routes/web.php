@@ -245,6 +245,9 @@ Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatW
 //PRODUCT VİEW MODAL WİTH AJAX
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
 
+//ADD TO CART STORE DATA
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+
 //ADD TO WİSHLİST
 Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
 
