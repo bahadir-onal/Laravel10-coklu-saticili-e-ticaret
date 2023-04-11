@@ -145,21 +145,44 @@
 
         //start add to cart product
 
-        function addToCard(params) {
-            var product_name = $('#productName').text();  
-            var id = $('#product_id').val();   
-            var color = $('#color option:select').text();   
-            var size = $('#size option:selected').text();   
-            var quantity = $('#quantity').val();   
+        function addToCart(){
+        var product_name = $('#productName').text();  
+        var id = $('#product_id').val();
+        var color = $('#color option:selected').text();
+        var size = $('#size option:selected').text();
+        var quantity = $('#quantity').val(); 
             $.ajax({
                 type: "POST",
-                dataType: 'json',
+                dataType : 'json',
                 data:{
-                    color:color, size:size, quantity:quantity, product_name:product_name
+                    color:color, size:size, quantity:quantity,product_name:product_name
                 },
                 url: "/cart/data/store/"+id,
-                success: function(data) {
-                    console.log(data)
+                success:function(data){
+                    $('#closeModal').click();
+                    //console.log(data)
+
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+                        
                 }
             })
         }
