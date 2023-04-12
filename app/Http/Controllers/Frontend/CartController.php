@@ -24,7 +24,7 @@ class CartController extends Controller
                 'price' => $product->selling_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
+                    'image' => $product->product_thumbnail,
                     'color' => $request->color,
                     'size' => $request->size,
                 ],
@@ -42,7 +42,7 @@ class CartController extends Controller
                 'price' => $product->discount_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
+                    'image' => $product->product_thumbnail,
                     'color' => $request->color,
                     'size' => $request->size,
                 ],
@@ -50,5 +50,24 @@ class CartController extends Controller
 
             return response()->json(['success' => 'Successfully added on your cart']);
         }
+    }
+
+    public function AddMiniCart(){
+
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,  
+            'cartTotal' => $cartTotal
+        ));
+    }
+
+    public function RemoveMiniCart($rowId)
+    {
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Product Remove From Cart']);
     }
 }

@@ -245,6 +245,12 @@ Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatW
 //PRODUCT VİEW MODAL WİTH AJAX
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
 
+//PRODUCT MİNİ CART
+Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
+
+//PRODUCT MİNİ CART REMOVE
+Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
 //ADD TO CART STORE DATA
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 
