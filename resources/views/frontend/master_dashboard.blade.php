@@ -144,53 +144,97 @@
         //end product with modal
 
         //start add to cart product
-
         function addToCart(){
-        var product_name = $('#productName').text();  
-        var id = $('#product_id').val();
-        var color = $('#color option:selected').text();
-        var size = $('#size option:selected').text();
-        var quantity = $('#quantity').val(); 
-            $.ajax({
-                type: "POST",
-                dataType : 'json',
-                data:{
-                    color:color, size:size, quantity:quantity,product_name:product_name
-                },
-                url: "/cart/data/store/"+id,
-                success:function(data){
-                    miniCart()
-                    $('#closeModal').click();
-                    //console.log(data)
+            var product_name = $('#productName').text();  
+            var id = $('#product_id').val();
+            var color = $('#color option:selected').text();
+            var size = $('#size option:selected').text();
+            var quantity = $('#quantity').val(); 
+                $.ajax({
+                    type: "POST",
+                    dataType : 'json',
+                    data:{
+                        color:color, size:size, quantity:quantity,product_name:product_name
+                    },
+                    url: "/cart/data/store/"+id,
+                    success:function(data){
+                        miniCart()
+                        $('#closeModal').click();
+                        //console.log(data)
 
 
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
 
-                    if ($.isEmptyObject(data.error)) {
-                        Toast.fire({
-                            type: 'success',
-                            title: data.success,
-                        })
-                    } else {
-                        Toast.fire({
-                            type: 'error',
-                            title: data.error,
-                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success,
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error,
+                            })
+                        }
+                            
                     }
-                        
-                }
-            })
-        }
-
+                })
+            }
         //end add to cart product
 
 
+        //start detail page add to cart product
+        function addToCartDetails(){
+            var product_name = $('#dproductName').text();  
+            var id = $('#dproduct_id').val();
+            var color = $('#dsize option:selected').text();
+            var size = $('#dcolor option:selected').text();
+            var quantity = $('#dquantity').val(); 
+                $.ajax({
+                    type: "POST",
+                    dataType : 'json',
+                    data:{
+                        color:color, size:size, quantity:quantity,product_name:product_name
+                    },
+                    url: "/dcart/data/store/"+id,
+                    success:function(data){
+                        miniCart()
+                        //console.log(data)
+
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success,
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error,
+                            })
+                        }
+                            
+                    }
+                })
+            }
+            //end detail page add to cart product
+
+
+    
     </script>
 
     <!--//mini cart-->
