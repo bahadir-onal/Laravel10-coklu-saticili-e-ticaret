@@ -52,7 +52,8 @@ class CartController extends Controller
         }
     }
 
-    public function AddMiniCart(){
+    public function AddMiniCart()
+    {
 
         $carts = Cart::content();
         $cartQty = Cart::count();
@@ -111,5 +112,23 @@ class CartController extends Controller
 
             return response()->json(['success' => 'Successfully added on your cart']);
         }
+    }
+
+    public function MyCart()
+    {
+        return view('frontend.mycart.view_mycart');
+    }
+
+    public function GetCartProduct()
+    {
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,  
+            'cartTotal' => $cartTotal
+        ));
     }
 }
