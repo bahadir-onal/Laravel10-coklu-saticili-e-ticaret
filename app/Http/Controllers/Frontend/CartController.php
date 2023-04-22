@@ -131,4 +131,26 @@ class CartController extends Controller
             'cartTotal' => $cartTotal
         ));
     }
+
+    public function CartRemove($rowId)
+    {
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Successfully remove from cart']);
+    }
+
+    public function CartDecrement($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty -1);
+
+        return response()->json('Descrement');
+    }
+
+    public function CartIncrement($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty +1);
+
+        return response()->json('Increment');
+    }
 }

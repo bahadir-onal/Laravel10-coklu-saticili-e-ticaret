@@ -653,18 +653,18 @@
                                     <td class="text-center detail-info" data-title="Stock">
                                         <div class="detail-extralink mr-15">
                                             <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                <a type="submit" class="qty-down" id="${value.rowId}" onclick="cartDecrement(this.id)"><i class="fi-rs-angle-small-down"></i></a>
 
                                                 <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
                                                 
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                <a type="submit" class="qty-up" id="${value.rowId}" onclick="cartIncrement(this.id)"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="price" data-title="Price">
                                         <h4 class="text-brand">$${value.subtotal} </h4>
                                     </td>
-                                    <td class="action text-center" data-title="Remove"><a type="submit" id="${value.id}" onclick="cartRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a></td>
+                                    <td class="action text-center" data-title="Remove"><a type="submit" id="${value.rowId}" onclick="cartRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a></td>
                                 </tr>`
                         });
                     $('#cartPage').html(rows);
@@ -685,7 +685,8 @@
                     url: "/cart-remove/"+id,
 
                     success:function(data){
-
+                    cart();
+                    miniCart();
                     // Start Message 
                     const Toast = Swal.mixin({
                         toast: true,
@@ -714,6 +715,37 @@
             }
         
         //mycart remove end 
+
+        //cart increment start 
+        function cartIncrement(rowId){
+            $.ajax({
+                type: "GET",
+                url: "/cart-increment/"+rowId,
+                dataType: 'json',
+                success:function(data) {
+                    cart();
+                    miniCart();
+                }
+            });
+        }
+        //cart increment start 
+        
+
+        //cart decrement start 
+        
+        function cartDecrement(rowId){
+            $.ajax({
+                type: "GET",
+                url: "/cart-decrement/"+rowId,
+                dataType: 'json',
+                success:function(data) {
+                    cart();
+                    miniCart();
+                }
+            });
+        }
+        
+        //cart decrement end 
 
     </script>    
 
