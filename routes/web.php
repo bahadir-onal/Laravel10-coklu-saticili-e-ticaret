@@ -269,6 +269,21 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 
+//MYCART ROUTE
+Route::controller(CartController::class)->group(function () {
+    Route::get('/mycart', 'MyCart')->name('mycart');
+    Route::get('/get-cart-product', 'GetCartProduct');
+    Route::get('/cart-remove/{rowId}', 'CartRemove');
+    Route::get('/cart-decrement/{rowId}', 'CartDecrement');
+    Route::get('/cart-increment/{rowId}', 'CartIncrement');
+});
+
+
+//CHECKOUT PAGE ROUTE
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+
+
     Route::middleware(['auth', 'role:user'])->group(function () {
 
         //WİSHLİST ROUTE
@@ -283,15 +298,6 @@ Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
             Route::get('/compare', 'AllCompare')->name('compare');
             Route::get('/get-compare-product', 'GetCompareProduct');
             Route::get('/compare-remove/{id}', 'CompareRemove');
-        });
-
-        //MYCART ROUTE
-        Route::controller(CartController::class)->group(function () {
-            Route::get('/mycart', 'MyCart')->name('mycart');
-            Route::get('/get-cart-product', 'GetCartProduct');
-            Route::get('/cart-remove/{rowId}', 'CartRemove');
-            Route::get('/cart-decrement/{rowId}', 'CartDecrement');
-            Route::get('/cart-increment/{rowId}', 'CartIncrement');
         });
 
     });//END USER MİDDLEWARE
