@@ -265,6 +265,9 @@ Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCom
 
 //FRONTEND COUPON OPTİON
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
 
     Route::middleware(['auth', 'role:user'])->group(function () {
 
