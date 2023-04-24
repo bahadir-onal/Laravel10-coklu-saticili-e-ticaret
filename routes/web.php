@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\CartController;
 
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\CheckoutController;
 
 
 
@@ -303,6 +304,8 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
         //CHECKOUT ROUTE
         Route::controller(CheckoutController::class)->group(function () {
             Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
+            Route::get('/state-get/ajax/{division_id}', 'StateGetAjax');
+            Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
         });
 
     });//END USER MİDDLEWARE
