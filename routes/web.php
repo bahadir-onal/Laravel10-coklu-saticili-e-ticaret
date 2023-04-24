@@ -300,4 +300,9 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/compare-remove/{id}', 'CompareRemove');
         });
 
+        //CHECKOUT ROUTE
+        Route::controller(CheckoutController::class)->group(function () {
+            Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
+        });
+
     });//END USER MİDDLEWARE

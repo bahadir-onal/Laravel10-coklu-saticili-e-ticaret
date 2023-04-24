@@ -1,6 +1,7 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
@@ -25,13 +26,12 @@
         <h4 class="mb-30">Billing Details</h4>
         <form method="post">
 
-
             <div class="row">
                 <div class="form-group col-lg-6">
-                    <input type="text" required="" name="fname" placeholder="User Name *">
+                    <input type="text" required="" name="shipping_name" value="{{ Auth::user()->name }}">
                 </div>
                 <div class="form-group col-lg-6">
-                    <input type="email" required="" name="lname" placeholder="Email *">
+                    <input type="email" required="" name="shipping_email" value="{{ Auth::user()->email }}">
                 </div>
             </div>
                            
@@ -40,33 +40,26 @@
                             <div class="row shipping_calculator">
                                 <div class="form-group col-lg-6">
                                     <div class="custom_select">
-                                        <select class="form-control select-active">
-                                            <option value="">Select an option...</option>
-                                            <option value="AX">Aland Islands</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AD">Andorra</option>
-                                             
+                                        <select name="division_id" class="form-control select-active">
+                                            <option value="">Select Division</option>
+                                            @foreach($divisions as $item)
+                                            <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input required="" type="text" name="city" placeholder="Phone*">
+                                    <input required="" type="text" name="shipping_phone" value="{{ Auth::user()->phone }}">
                                 </div>
                             </div>
 
                              <div class="row shipping_calculator">
                                 <div class="form-group col-lg-6">
                                     <div class="custom_select">
-                                        <select class="form-control select-active">
+                                        <select name="district_id" class="form-control select-active">
                                             <option value="">Select an option...</option>
+
                                             <option value="AX">Aland Islands</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AD">Andorra</option>
-                                             
                                         </select>
                                     </div>
                                 </div>
@@ -79,23 +72,18 @@
                         <div class="row shipping_calculator">
                                 <div class="form-group col-lg-6">
                                     <div class="custom_select">
-                                        <select class="form-control select-active">
+                                        <select name="state_id" class="form-control select-active">
                                             <option value="">Select an option...</option>
                                             <option value="AX">Aland Islands</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AD">Andorra</option>
-                                             
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input required="" type="text" name="city" placeholder="Address *">
+                                    <input required="" type="text" name="shipping_address" placeholder="Address *" value="{{ Auth::user()->address }}">
                                 </div>
                             </div>
                             <div class="form-group mb-30">
-                                <textarea rows="5" placeholder="Additional information"></textarea>
+                                <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
                             </div>
                         </form>
                     </div>
@@ -217,5 +205,32 @@
                 </div>
             </div>
         </div>
+
+
+            <script type="text/javascript">
+
+                $(document).ready(function(){
+                    $('select[name="division_id"]').on('change', function(){
+                        var division_id = $(this).val();
+                        if (division_id) {
+                            $.ajax({
+                                url: "{{ url('/district-get/ajax') }}/"+division_id,
+                                type: "GET",
+                                dataType: "json",
+                                success:function(data){
+                                    $('select[name="district_id"]').html('');
+                                    var d = $('select[name="district_id"]').empty();
+                                    $.each(data, function(key, value){
+                                        $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.district_name + '</option>'); 
+                                    });
+                                },
+                            });
+                        } else {
+                            alert('danger');
+                        }
+                    });
+                });
+
+            </script>
 
 @endsection
