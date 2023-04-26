@@ -17,7 +17,7 @@ class CartController extends Controller
     public function AddToCart(Request $request, $id)
     {
         if (Session::has('coupon')) { // YENİ BİR ÜRÜN EKLEDİĞİMDE KUPONU SİLER
-            Session::forget('coupon')
+            Session::forget('coupon');
         }
 
         $product = Product::findOrFail($id);
@@ -84,7 +84,7 @@ class CartController extends Controller
     {
 
         if (Session::has('coupon')) {
-            Session::forget('coupon')
+            Session::forget('coupon');
         }
 
         $product = Product::findOrFail($id);
