@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\StripeController;
 
 
 
@@ -306,6 +307,11 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
             Route::get('/state-get/ajax/{division_id}', 'StateGetAjax');
             Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
+        });
+
+        //STRİPE ROUTE
+        Route::controller(StripeController::class)->group(function () {
+            Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
         });
 
     });//END USER MİDDLEWARE
