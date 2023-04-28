@@ -172,7 +172,7 @@
         function addToCart(){
             var product_name = $('#productName').text();  
             var id = $('#product_id').val();
-            var vendor_id = $('#productVendorId').text();
+            var vendor = $('#productVendorId').text();
             var color = $('#color option:selected').text();
             var size = $('#size option:selected').text();
             var quantity = $('#quantity').val(); 
@@ -180,7 +180,7 @@
                     type: "POST",
                     dataType : 'json',
                     data:{
-                        color:color, size:size, quantity:quantity,product_name:product_name, vendor_id:vendor_id
+                        color:color, size:size, quantity:quantity,product_name:product_name, vendor:vendor
                     },
                     url: "/cart/data/store/"+id,
                     success:function(data){
