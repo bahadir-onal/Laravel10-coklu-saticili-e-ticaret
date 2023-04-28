@@ -63,6 +63,7 @@
                                             <ul>
                                                 <li class="mb-5">Brand: <span class="text-brand" id="productBrand"></span></li>
                                                 <li class="mb-5">Category: <span class="text-brand" id="productCategory"> </span></li>
+                                                <li class="mb-5">Vendor: <span class="text-brand" id="productVendorId"> </span></li>
                                             </ul>
                                         </div>
                                     </div>

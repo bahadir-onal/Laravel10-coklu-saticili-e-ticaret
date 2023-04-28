@@ -118,6 +118,7 @@
                     $('#productCategory').text(data.product.category.product_category);
                     $('#productBrand').text(data.product.brand.brand_name);
                     $('#productImage').attr('src','/'+data.product.product_thumbnail);
+                    $('#productVendorId').text(data.product.vendor_id);
 
                     $('#product_id').val(id);
                     $('#qty').val(1);
@@ -171,6 +172,7 @@
         function addToCart(){
             var product_name = $('#productName').text();  
             var id = $('#product_id').val();
+            var vendor_id = $('#productVendorId').text();
             var color = $('#color option:selected').text();
             var size = $('#size option:selected').text();
             var quantity = $('#quantity').val(); 
@@ -178,7 +180,7 @@
                     type: "POST",
                     dataType : 'json',
                     data:{
-                        color:color, size:size, quantity:quantity,product_name:product_name
+                        color:color, size:size, quantity:quantity,product_name:product_name, vendor_id:vendor_id
                     },
                     url: "/cart/data/store/"+id,
                     success:function(data){
@@ -217,6 +219,7 @@
         function addToCartDetails(){
             var product_name = $('#dproductName').text();  
             var id = $('#dproduct_id').val();
+            var vendor = $('#vproduct_id').val();
             var color = $('#dsize option:selected').text();
             var size = $('#dcolor option:selected').text();
             var quantity = $('#dquantity').val(); 
@@ -224,7 +227,7 @@
                     type: "POST",
                     dataType : 'json',
                     data:{
-                        color:color, size:size, quantity:quantity,product_name:product_name
+                        color:color, size:size, quantity:quantity,product_name:product_name, vendor:vendor
                     },
                     url: "/dcart/data/store/"+id,
                     success:function(data){
