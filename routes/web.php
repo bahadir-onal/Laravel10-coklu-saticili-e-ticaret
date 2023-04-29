@@ -312,6 +312,7 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
         //STRİPE ROUTE
         Route::controller(StripeController::class)->group(function () {
             Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
+            Route::post('/cash/order', 'CashOrder')->name('cash.order');
         });
 
     });//END USER MİDDLEWARE
