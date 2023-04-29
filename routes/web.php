@@ -16,6 +16,8 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\VendorOrderController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
@@ -94,6 +96,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/vendor/product/active/{id}', 'VendorProductActive')->name('vendor.product.active');
             Route::get('/vendor/delete/product/{id}', 'VendorProductDelete')->name('vendor.delete.product');
             
+        });
+
+        //VENDOR ORDER CONTROLLER
+        Route::controller(VendorOrderController::class)->group(function () {
+            Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
         });
 
 
@@ -228,6 +235,11 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
             Route::post('/state/update', 'StateUpdate')->name('state.update');
             Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');
 
+        });
+
+        //ADMİN ORDER ROUTE
+        Route::controller(OrderController::class)->group(function () {
+            Route::get('/pending/order', 'PendingOrder')->name('pending.order');
         });
         
     });//END ADMIN MİDDLEWARE
