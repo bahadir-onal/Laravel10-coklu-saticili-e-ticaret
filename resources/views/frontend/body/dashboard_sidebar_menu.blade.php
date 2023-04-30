@@ -26,7 +26,7 @@
                 <a class="nav-link {{ ($route == 'user.change.password' ? 'active' : '') }}" href="{{ route('user.change.password') }}"><i class="fi-rs-password mr-10"></i>Change Password</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.logout') }}"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
+                <a class="nav-link" style="background: #ddd" href="{{ route('user.logout') }}"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
             </li>
         </ul>
     </div>
