@@ -334,6 +334,7 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/user/change/password', 'UserChangePassword')->name('user.change.password');
             Route::get('/user/order/page', 'UserOrderPage')->name('user.order.page');
             Route::get('/user/order_details/{order_id}', 'UserOrderDetails');
+            Route::get('/user/invoice_download/{order_id}', 'UserOrderInvoice');
         });
         
     });//END USER MİDDLEWARE
