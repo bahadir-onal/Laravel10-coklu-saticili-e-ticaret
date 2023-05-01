@@ -4,13 +4,13 @@
             <div class="page-content">  
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Pending Orders</div>
+					<div class="breadcrumb-title pe-3">Delivered Orders</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">All Pending Orders</li>
+								<li class="breadcrumb-item active" aria-current="page">All Delivered Orders</li>
 							</ol>
 						</nav>
 					</div>
