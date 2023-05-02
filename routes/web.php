@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\VendorOrderController;
+use App\Http\Controllers\Backend\ReturnController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
@@ -250,6 +251,12 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
             Route::get('/processing/delivered/{order_id}', 'ProcessingToDelivered')->name('processing-delivered');
             Route::get('/admin/invoice/download/{order_id}', 'AdminInvoiceDownload')->name('admin.invoice.download');
         });
+
+        //RETURN ORDER ROUTE
+        Route::controller(ReturnController::class)->group(function () {
+            Route::get('/return/request', 'ReturnRequest')->name('return.request');
+        });
+        
         
     });//END ADMIN MİDDLEWARE
 
@@ -343,6 +350,8 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/user/order/page', 'UserOrderPage')->name('user.order.page');
             Route::get('/user/order_details/{order_id}', 'UserOrderDetails');
             Route::get('/user/invoice_download/{order_id}', 'UserOrderInvoice');
+            Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
+            Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
         });
         
     });//END USER MİDDLEWARE

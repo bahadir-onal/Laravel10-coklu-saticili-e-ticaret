@@ -5,11 +5,11 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<div class="page-header breadcrumb-wrap">
+        <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> My Account
+                    <span></span> Return Order Page
                 </div>
             </div>
         </div>
@@ -36,6 +36,7 @@
                                                                 <th>Totaly</th>
                                                                 <th>Payment</th>
                                                                 <th>Invoice</th>
+                                                                <th>Reason</th>
                                                                 <th>Status</th>
                                                                 <th>Actions</th>
                                                             </tr>
@@ -48,20 +49,14 @@
                                                                     <td>{{ $order->amount }}</td>
                                                                     <td>{{ $order->payment_method }}</td>
                                                                     <td>{{ $order->invoice_no }}</td>
+                                                                    <td>{{ $order->return_reason }}</td>
                                                                     <td>
-                                                                        @if($order->status == 'pending')
-                                                                            <span class="badge rounded-pill bg-warning">Pending</span>
-                                                                        @elseif($order->status == 'confirm')
-                                                                            <span class="badge rounded-pill bg-info">Confirm</span>
-                                                                        @elseif($order->status == 'processing')
-                                                                            <span class="badge rounded-pill bg-danger">Processing</span>
-                                                                        @elseif($order->status == 'delivered')
-                                                                            <span class="badge rounded-pill bg-success">Delivered</span>
-
-                                                                            @if($order->return_order == 1)
-                                                                            <span class="badge rounded-pill bg-danger">Return</span>
-                                                                            @endif
-
+                                                                        @if($order->return_order == 0)
+                                                                            <span class="badge rounded-pill bg-warning">No Return Request</span>
+                                                                        @elseif($order->return_order == 1)
+                                                                            <span class="badge rounded-pill bg-danger">Pending</span>
+                                                                        @elseif($order->return_order == 2)
+                                                                            <span class="badge rounded-pill bg-success">Success</span>
                                                                         @endif    
                                                                     </td>
 
