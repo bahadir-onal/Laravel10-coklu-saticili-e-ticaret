@@ -53,7 +53,7 @@
                                                 @endif
                                             </td> 
                                             <td>
-                                                <a href="" class="btn btn-info" title="Details"><i class="fa fa-eye fa-xs"></i></a>
+                                                <a href="{{ route('vendor.order.details',$item->order->id) }}" class="btn btn-info" title="Details"><i class="fa fa-eye fa-xs"></i></a>
                                             </td>
                                             </tr>
                                         @else
