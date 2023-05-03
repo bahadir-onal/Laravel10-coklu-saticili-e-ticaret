@@ -255,6 +255,8 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
         //RETURN ORDER ROUTE
         Route::controller(ReturnController::class)->group(function () {
             Route::get('/return/request', 'ReturnRequest')->name('return.request');
+            Route::get('/return/request/approved/{order_id}', 'ReturnRequestApproved')->name('return.request.approved');
+            Route::get('/complete/return/request', 'CompleteReturnRequest')->name('complete.return.request');
         });
         
         

@@ -4,13 +4,13 @@
             <div class="page-content">  
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Return Orders</div>
+					<div class="breadcrumb-title pe-3">Complete Return Orders</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">All Return Orders</li>
+								<li class="breadcrumb-item active" aria-current="page">All Complete Return Orders</li>
 							</ol>
 						</nav>
 					</div>
@@ -47,7 +47,7 @@
                                     <td>
                                         @if($item->return_order == 1)
                                             <span class="badge rounded-pill bg-danger"> Pending</span>
-                                        @elseif($item->return_order == 1)
+                                        @elseif($item->return_order == 2)
                                             <span class="badge rounded-pill bg-success"> Success</span>
                                         @endif
                                     </td> 
