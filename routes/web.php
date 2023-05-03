@@ -103,6 +103,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         //VENDOR ORDER CONTROLLER
         Route::controller(VendorOrderController::class)->group(function () {
             Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
+            Route::get('/vendor/return/order', 'VendorReturnOrder')->name('vendor.return.order');
+            Route::get('/vendor/complete/return/order', 'VendorCompleteReturnOrder')->name('vendor.complete.return.order');
         });
 
 
