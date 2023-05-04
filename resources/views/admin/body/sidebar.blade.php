@@ -190,6 +190,19 @@
 				</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
+						<div class="parent-icon"><i class="bx bx-user"></i>
+						</div>
+						<div class="menu-title">User Management</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('all-user') }}"><i class="bx bx-right-arrow-alt"></i>All User</a>
+						</li>
+						<li> <a href="{{ route('all-vendor') }}"><i class="bx bx-right-arrow-alt"></i>All Vendor</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"> <i class="bx bx-donate-blood"></i>
 						</div>
 						<div class="menu-title">Icons</div>
