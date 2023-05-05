@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ActiveUserController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
@@ -277,11 +278,18 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
             Route::get('/all/user', 'AllUser')->name('all-user');
             Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
         });
+
+        //BLOG CATEGORY AND POST ROUTE
+        Route::controller(BlogController::class)->group(function () {
+            Route::get('/admin/blog/category', 'AllBlogCategory')->name('admin.blog.category');
+            Route::get('/admin/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
+            Route::post('/admin/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+        }); 
         
         
     });//END ADMIN MİDDLEWARE
 
-
+    
 //FRONTEND PRODUCT DETAİLS ROUTE
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 
