@@ -395,5 +395,12 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
             Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
         });
+
+        //FRONTEND BLOG POST ROUTE
+        Route::controller(BlogController::class)->group(function () {
+            Route::get('/blog', 'AllBlog')->name('home.blog');
+            Route::get('/post/details/{id}/{slug}', 'BlogDetails');
+            Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
+        });
         
     });//END USER MİDDLEWARE
