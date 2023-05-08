@@ -31,6 +31,7 @@ use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\User\ReviewController;
 
 
 /*
@@ -401,6 +402,11 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/blog', 'AllBlog')->name('home.blog');
             Route::get('/post/details/{id}/{slug}', 'BlogDetails');
             Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
+        });
+
+        //REVİEW, COMMENT ROUTE
+        Route::controller(ReviewController::class)->group(function () {
+            Route::post('/store/review', 'StoreReview')->name('store.review');
         });
         
     });//END USER MİDDLEWARE
