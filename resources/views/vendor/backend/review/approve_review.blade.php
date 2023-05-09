@@ -35,7 +35,6 @@
 										<th>Comment</th>
 										<th>Rating</th>
 										<th>Status</th>
-										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -46,8 +45,8 @@
                                             <img src="{{ asset($item['product']['product_thumbnail']) }}" style="width: 40px; height: 40px;">
                                         </td>
 										<td>{{ $item['product']['product_name'] }}</td>
-										<td>{{ $item['user']['name'] }}</td>
-										<td>{{ Str::limit($item->comment, 25); }}</td>
+										<td>{{ $item['user']['name'] }}</td>									
+                                        <td>{{ Str::limit($item->comment, 25); }}</td>
 										<td>
                                             @if($item->rating == NULL)
                                                 <i class="bx bxs-star text-secondary"></i>
@@ -94,9 +93,6 @@
                                                 <span class="badge rounded-pill bg-info">Publish</span>
                                             @endif
                                         </td>
-										<td>
-											<a href="{{ route('review.approve', $item->id) }}" class="btn btn-primary">Approve</a>
-										</td>
 									</tr>
 									@endforeach
 								</tbody>
@@ -109,7 +105,6 @@
 										<th>Comment</th>
 										<th>Rating</th>
 										<th>Status</th>
-										<th>Action</th>
 									</tr>
 								</tfoot>
 							</table>
