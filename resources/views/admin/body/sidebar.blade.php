@@ -203,7 +203,7 @@
 				</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-comment-detail"></i>
+						<div class="parent-icon"><i class="bx bx-message-alt-detail"></i>
 						</div>
 						<div class="menu-title">Blog Management</div>
 					</a>
@@ -211,6 +211,19 @@
 						<li> <a href="{{ route('admin.blog.category') }}"><i class="bx bx-right-arrow-alt"></i>All Blog Category</a>
 						</li>
 						<li> <a href="{{ route('admin.blog.post') }}"><i class="bx bx-right-arrow-alt"></i>All Blog Post</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a class="has-arrow" href="javascript:;">
+						<div class="parent-icon"><i class="bx bx-comment-detail"></i>
+						</div>
+						<div class="menu-title">Review Management</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending Review</a>
+						</li>
+						<li> <a href="{{ route('publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish Review</a>
 						</li>
 					</ul>
 				</li>

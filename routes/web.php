@@ -299,6 +299,14 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
             Route::post('/admin/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
             Route::get('/admin/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
         });
+
+        //ADMİN REVİEW, COMMENT ROUTE
+        Route::controller(ReviewController::class)->group(function () {
+            Route::get('/pending/review', 'PendingReview')->name('pending.review');
+            Route::get('/review/approve/{id}', 'ReviewApprove')->name('review.approve');
+            Route::get('/publish/review', 'PublishReview')->name('publish.review');
+            Route::get('/review/delete/{id}', 'ReviewDelete')->name('review.delete');
+        });
         
 
     });//END ADMIN MİDDLEWARE
@@ -349,6 +357,11 @@ Route::controller(CartController::class)->group(function () {
     Route::get('/cart-remove/{rowId}', 'CartRemove');
     Route::get('/cart-decrement/{rowId}', 'CartDecrement');
     Route::get('/cart-increment/{rowId}', 'CartIncrement');
+});
+
+//REVİEW, COMMENT ROUTE
+Route::controller(ReviewController::class)->group(function () {
+    Route::post('/store/review', 'StoreReview')->name('store.review');
 });
 
 
@@ -402,11 +415,6 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/blog', 'AllBlog')->name('home.blog');
             Route::get('/post/details/{id}/{slug}', 'BlogDetails');
             Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
-        });
-
-        //REVİEW, COMMENT ROUTE
-        Route::controller(ReviewController::class)->group(function () {
-            Route::post('/store/review', 'StoreReview')->name('store.review');
         });
         
     });//END USER MİDDLEWARE
