@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
@@ -311,6 +312,12 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
             Route::get('/review/approve/{id}', 'ReviewApprove')->name('review.approve');
             Route::get('/publish/review', 'PublishReview')->name('publish.review');
             Route::get('/review/delete/{id}', 'ReviewDelete')->name('review.delete');
+        });
+
+        //SİTE SETTİNG ALL ROUTE
+        Route::controller(SiteSettingController::class)->group(function () {
+            Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+            Route::post('/site/setting/update', 'SiteSettingUpdate')->name('site.setting.update');
         });
         
 
