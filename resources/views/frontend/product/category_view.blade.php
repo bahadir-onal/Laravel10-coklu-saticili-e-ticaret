@@ -1,6 +1,10 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+{{ $breadcat->category_name }} Category | Bahadır Önal
+@endsection
+
 <div class="page-header mt-30 mb-50">
             <div class="container">
                 <div class="archive-header">

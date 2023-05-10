@@ -1,6 +1,10 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+    Vendor Details Page | Bahadır Önal
+@endsection
+
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">

@@ -1,6 +1,10 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+	Stripe Payment | Bahadır Önal
+@endsection
+
 <!--/////////////////////////---------- CSS ------- /////////////////////////////-->
 <style>
     /**

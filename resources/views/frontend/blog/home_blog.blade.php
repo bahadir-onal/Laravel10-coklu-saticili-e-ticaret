@@ -1,6 +1,11 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+    Blog Page | Bahadır Önal
+@endsection
+
+
         <div class="page-header mt-30 mb-75">
             <div class="container">
                 <div class="archive-header">

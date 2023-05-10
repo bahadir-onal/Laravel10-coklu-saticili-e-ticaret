@@ -369,6 +369,13 @@ Route::controller(ReviewController::class)->group(function () {
     Route::post('/store/review', 'StoreReview')->name('store.review');
 });
 
+//FRONTEND BLOG POST ROUTE
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog', 'AllBlog')->name('home.blog');
+    Route::get('/post/details/{id}/{slug}', 'BlogDetails');
+    Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
+});
+
 
 //CHECKOUT PAGE ROUTE
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
@@ -413,13 +420,6 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
             Route::get('/user/invoice_download/{order_id}', 'UserOrderInvoice');
             Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
             Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
-        });
-
-        //FRONTEND BLOG POST ROUTE
-        Route::controller(BlogController::class)->group(function () {
-            Route::get('/blog', 'AllBlog')->name('home.blog');
-            Route::get('/post/details/{id}/{slug}', 'BlogDetails');
-            Route::get('/post/category/{id}/{slug}', 'BlogPostCategory');
         });
         
     });//END USER MİDDLEWARE

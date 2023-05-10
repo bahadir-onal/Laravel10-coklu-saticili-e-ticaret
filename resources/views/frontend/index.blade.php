@@ -1,6 +1,9 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+    Home Multi Vendor Shop | Bahadır Önal
+@endsection
 
     @include('frontend.home.home_slider')
 

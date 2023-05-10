@@ -1,6 +1,11 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+    {{ $blogDetails->post_title }} | Bahadır Önal
+@endsection
+
+
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
